@@ -1,15 +1,31 @@
 package com.example.imagespace
 
+import android.graphics.drawable.PaintDrawable
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.foundation.Image
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.wrapContentWidth
+import androidx.compose.material3.Button
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.painter.Painter
+import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
 import com.example.imagespace.ui.theme.ImageSpaceTheme
 
 class MainActivity : ComponentActivity() {
@@ -22,7 +38,7 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    Greeting("Android")
+                    SpaceView("Android")
                 }
             }
         }
@@ -30,17 +46,75 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
+fun getSpaceInfo(index: Int): String {
+
+    val info: String = when(index) {
+        1 -> stringResource(R.string.app_name)
+
+        else -> "Done"
+    }
+
+    return info
 }
 
-@Preview(showBackground = true)
 @Composable
-fun GreetingPreview() {
+fun getSpaceImage(index: Int): Painter {
+
+    val image: Painter = when(index) {
+        1 -> painterResource(R.drawable.ic_launcher_background)
+
+        else -> painterResource(R.drawable.ic_launcher_background)
+    }
+
+    return image
+}
+
+@Composable
+fun SpaceView(name: String, modifier: Modifier = Modifier) {
+
+    Surface(
+        color = Color.DarkGray,
+        modifier = modifier
+            .fillMaxSize()
+    ) {
+        Column(
+            horizontalAlignment = Alignment.CenterHorizontally,
+            verticalArrangement = Arrangement.Center,
+        ) {
+            Image(
+                painter = getSpaceImage(1),
+                contentDescription = "Nothing"
+            )
+            Spacer(modifier = Modifier.height(50.dp))
+            Text(
+                text = getSpaceInfo(1)
+            )
+        }
+        Row(
+            verticalAlignment = Alignment.Bottom,
+            horizontalArrangement = Arrangement.SpaceEvenly,
+            modifier = modifier
+                .fillMaxWidth()
+        ) {
+            Button(
+                onClick = { /*TODO*/ },
+            ) {
+
+            }
+
+            Button(
+                onClick = { /*TODO*/ },
+            ) {
+
+            }
+        }
+    }
+}
+
+@Preview(showSystemUi = true)
+@Composable
+fun AppPreview() {
     ImageSpaceTheme {
-        Greeting("Android")
+        SpaceView("Android")
     }
 }
