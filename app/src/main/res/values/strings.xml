@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">Image Space</string>
+    <string name="image_one">What a beautiful plane</string>
+    <string name="image_two">Enjoy the peace</string>
+    <string name="image_three">Look at the beautiful mountains</string>
+    <string name="image_four">What a beautiful sky</string>
+    <string name="desc_one">A plane flying over mountains at the sunset</string>
+    <string name="desc_two">A beautiful view of a quiet forest at night</string>
+    <string name="desc_three">Three mountains next to each others during sunset</string>
+    <string name="desc_four">Colorful Sky in the night at the north pol</string>
 </resources>
